@@ -2,6 +2,7 @@
     import {onMount} from 'svelte';
     import {auth, db} from '../lib/firebase/firebase';
     import {getDoc, doc, setDoc} from 'firebase/firestore'
+    import {authStore} from "../store/store"
 
     const nonAuthRoutes = ["/", "product"]
     onMount(()=>{

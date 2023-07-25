@@ -26,7 +26,8 @@
             }
         }catch(err){
             console.log("There was an error", err);
-            error = true
+            error = true;
+            authenticating = false;
         }
     }
     function handleRegister(){

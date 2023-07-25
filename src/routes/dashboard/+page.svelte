@@ -1,9 +1,16 @@
 <script>
-   import {authHandlers} from "./../store/store"
+   import {authHandlers, authStore} from "../../store/store"
+   import {getDoc, doc, setDoc} from 'firebase/firestore'
+   import { db } from '../../lib/firebase/firebase';
+   import { onMount } from 'svelte';
 
     let todoList = []
     let currTodo = "";
     let error = false;
+
+     authStore.subscribe((curr)=>{
+        todoList = curr.todos
+    });
 
     function addTodo(){
         error = false;
@@ -31,12 +38,32 @@
         
         todoList = newTodoList;
     }
+    async function save() {
+  try {
+    
+    const userRef = doc(db, 'users', $authStore.user.uid);
+
+    
+    await setDoc(
+      userRef,
+      {
+        todos: todoList,
+      },
+      { merge: true }
+    );
+
+    console.log('Data saved successfully!');
+  } catch (err) {
+    console.error('Error! Could not save:', err);
+  }
+}
 </script>
+{#if !$authStore.loading}
 <div class="mainContainer">
     <div class="headerContainer">
             <h1>Todo List</h1>
             <div class="headerBtns">
-            <button><i class="ri-save-2-line"></i>Save</button>
+            <button on:click={save}><i class="ri-save-2-line"></i>Save</button>
             <button on:click={authHandlers.logout}><i class="ri-logout-box-line"></i>Log out</button>
         </div>
     </div>
@@ -72,6 +99,7 @@
     <button on:click={addTodo}>ADD</button>
 </div>
 </div>
+{/if}
 <style>
     .mainContainer{
         display: flex;
