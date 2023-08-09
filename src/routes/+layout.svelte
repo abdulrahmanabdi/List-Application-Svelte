@@ -44,7 +44,7 @@
                 return{
                     ...curr,
                     user,
-                    dataToSettoStore,
+                    ...dataToSettoStore,
                     loading: false,
                 };
             });

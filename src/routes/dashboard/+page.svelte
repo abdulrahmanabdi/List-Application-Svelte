@@ -8,7 +8,10 @@
     let currTodo = "";
     let error = false;
 
-     authStore.subscribe((curr)=>{
+     
+
+    authStore.subscribe((curr)=>{
+        console.log(curr)
         todoList = curr.todos
     });
 
@@ -61,7 +64,7 @@
 {#if !$authStore.loading}
 <div class="mainContainer">
     <div class="headerContainer">
-            <h1>Todo List</h1>
+            <h1>List</h1>
             <div class="headerBtns">
             <button on:click={save}><i class="ri-save-2-line"></i>Save</button>
             <button on:click={authHandlers.logout}><i class="ri-logout-box-line"></i>Log out</button>
