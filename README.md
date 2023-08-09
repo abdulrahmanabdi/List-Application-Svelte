@@ -1,3 +1,21 @@
+#Svelte Firebase Authentication User Based To do List
+
+This is the example repo for a svelte application using firebase authentication.
+
+Features of App
+User can register.
+User can login.
+User can add their own to do list once login.
+Every user has their own dashboard
+User's list is saved until deleted
+User can delete and add wishlist
+##Instruction
+
+Update your firebase config in Firebase.js
+Set up : npm install
+Start Project: npm run dev
+Deploy : npm run build
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
