@@ -1,6 +1,6 @@
 #Svelte Firebase Authentication User Based To do List
 
-This is the example repo for a svelte application using firebase authentication.
+Repository for a svelte application using firebase authentication.
 
 Features of App
 User can register.
